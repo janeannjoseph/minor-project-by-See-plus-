@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+int
+main ()
+{
+
+  int x, y, z, Result;
+
+  cout << "***Menu***\n\n";
+  cout << "Please select your operation to be implemented:\n";
+  cout << "Enter:\n";
+  cout << "1 for Addition \n";
+  cout << "2 for Subtraction \n";
+  cout << "3 for Multiplication \n";
+  cout << "4 for Division \n";
+
+  cin >> x;
+  cout << "Enter 2 numbers to implement this operation: \n";
+  cin >> y >> z;
+
+  switch (x)
+    {
+    case 1:
+      {
+	cout << "You have selected Addition operation.\n";
+
+	Result = y + z;
+	cout << "Result is " << Result;
+
+	break;
+      }
+
+    case 2:
+      {
+
+	cout << "You have selected Subtraction operation.\n";
+
+	Result = y - z;
+	cout << "Result is " << Result;
+
+	break;
+      }
+
+    case 3:
+      {
+	cout << "You have selected  Multiplication operation.\n";
+
+	Result = y * z;
+	cout << "Result is " << Result;
+
+	break;
+      }
+
+    case 4:
+      {
+
+	cout << "You have selected Division operation.\n";
+
+	Result = y / z;
+	cout << "Result is " << Result;
+
+	break;
+      }
+    }
+  return 0;
+}
