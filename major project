@@ -1,0 +1,229 @@
+#include <iostream>
+#include<string>
+
+
+using namespace std;
+
+struct Student
+{
+
+  int roll, mark[5];
+  string name, std;
+
+} S;
+
+void
+Enter_studentDetails (int R, string N, string C)
+{
+
+  S.roll = R;
+  S.name = N;
+  S.std = C;
+
+  cout << "\n\tStudent Details stored";
+
+}
+
+void
+Enter_Marks ()
+{
+  cout << "\nEnter Mark for Subject 1 : ";
+  cin >> S.mark[0];
+  cout << "\nEnter Mark for Subject 2 : ";
+  cin >> S.mark[1];
+  cout << "\nEnter Mark for Subject 3 : ";
+  cin >> S.mark[2];
+  cout << "\nEnter Mark for Subject 4 : ";
+  cin >> S.mark[3];
+  cout << "\nEnter Mark for Subject 5 : ";
+  cin >> S.mark[4];
+
+  cout << "\n\tMarks for 5 subjects stored";
+}
+
+void
+Delete_Mark (int key)
+{
+
+  if (key > 5)
+    {
+      cout << "Invalid .";
+    }
+  else
+    {
+      S.mark[key - 1] = -1;
+
+      cout << "\n\tMark of Subject " << key << " is Deleted.";
+    }
+}
+
+void
+Insert_Mark (int key)
+{
+
+  if (key > 5)
+    {
+      cout << "Invalid.";
+    }
+  else
+    {
+      if (S.mark[key - 1] == -1)
+	{
+	  cout <<
+	    "\nEnter the mark to be instered "
+	    << key << " : ";
+	  cin >> S.mark[key - 1];
+	  cout << "\n\tMark of Subject " << key <<
+	    " is Inserted successfully.";
+	}
+      else
+	{
+	  cout << "\n\tMark is already inserted for Subject " << key << ".";
+	}
+    }
+}
+
+
+
+void
+Mark_operations ()
+{
+
+  int op_choice, sub_choice;
+
+
+  while (op_choice != 9)
+    {
+
+      cout << "\n\n\tPress"
+	"\n\t1 To DELETE the Mark of a subject"
+	"\n\t2 To INSERT the Mark of a subject"
+	"\n\t" "\n\t9 to Exit to main menu\n";
+      cout << "\nEnter your Choice\n";
+      cin >> op_choice;
+
+      switch (op_choice)
+	{
+	case 1:
+	  {
+	    cout <<
+	      "\n\n\tPress the appropriate key to DELETE mark of the corresponding subject"
+	      "\n\t1 for Subject 1" "\n\t2 for Subject 2"
+	      "\n\t3 for Subject 3" "\n\t4 for Subject 4"
+	      "\n\t5 for Subject 5\n";
+	    cout << "\nEnter your Choice\n";
+	    cin >> sub_choice;
+
+	    Delete_Mark (sub_choice);
+	    break;
+	  }
+	case 2:
+	  {
+	    cout <<
+	      "\n\n\tPress to INSERT mark"
+	      "\n\t1 for Subject 1" "\n\t2 for Subject 2"
+	      "\n\t3 for Subject 3" "\n\t4 for Subject 4"
+	      "\n\t5 for Subject 5\n";
+	    cout << "\nEnter your Choice\n";
+	    cin >> sub_choice;
+
+	    Insert_Mark (sub_choice);
+	    break;
+	  }
+
+	case 9:
+	  {
+	    cout << "\nExiting back to main menu..";
+	    break;
+	  }
+	default:
+	  cout << "invalid entry";
+	  break;
+	}
+
+    }
+}
+
+void
+Show_mark (int key)
+{
+  if (S.mark[key - 1] == -1)
+    cout << "\n\tMark unavailable/Deleted";
+  else
+    cout << "\n\tSubject " << key << " : " << S.mark[key - 1];
+}
+
+void
+Show_Student ()
+{
+  cout << "\n\tStudent Name : " << S.name;
+  cout << "\n\tStudent Class : " << S.std;
+  cout << "\n\tStudent Roll No : " << S.roll;
+
+  cout << "\n\n\tLatest Marks of the 5 Subjects\n";
+
+  Show_mark (1);
+  Show_mark (2);
+  Show_mark (3);
+  Show_mark (4);
+  Show_mark (5);
+
+}
+
+int
+main ()
+{
+
+  string Name, Class;
+  int Roll;
+
+  // Menu-driven program
+  while (true)
+    {
+      cout << "\n\n\tPress"
+	"\n\t1 To Enter details of the Student"
+	"\n\t2 To Enter the Marks of this Student"
+	"\n\t3 To Delete the Mark of the student"
+	"\n\t4 to View Student Details with all the marks" "\n\t5 to Exit\n";
+      cout << "\nEnter your Choice\n";
+      int Choice;
+
+      // Enter Choice
+      cin >> Choice;
+      if (Choice == 1)
+	{
+	  cout << "Enter Name of Student\n";
+	  cin >> Name;
+	  cout << "Enter Roll Number of Student\n";
+	  cin >> Roll;
+	  cout << "Enter Class of Student \n";
+	  cin >> Class;
+
+	  Enter_studentDetails (Roll, Name, Class);
+	}
+      else if (Choice == 2)
+	{
+
+	  Enter_Marks ();
+	}
+      else if (Choice == 3)
+	{
+
+	  Mark_operations ();
+	}
+      else if (Choice == 4)
+	{
+
+	  Show_Student ();
+	}
+      else if (Choice == 5)
+	{
+	  exit (0);
+	}
+      else
+	{
+	  cout << "Invalid Choice " << "Try Again\n";
+	}
+    }
+  return 0;
+}
